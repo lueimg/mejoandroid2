@@ -1,10 +1,13 @@
 package com.luismori.practicac2;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +38,30 @@ public class MyActivity extends Activity {
                 names);
 
         list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String name = adapter.getItem(position);
+
+                if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+
+                    Intent action = new Intent(getApplicationContext(),NameDetailActivity.class);
+                    action.putExtra(NAME_TAG,name);
+                    startActivity(action);
+
+                }else{
+
+                    NameDetailFragment frag = (NameDetailFragment) getFragmentManager().findFragmentById(R.id.detail_fragment);
+                    frag.setName(name);
+                }
+
+
+
+
+            }
+        });
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,3 +99,4 @@ public class MyActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 }
+

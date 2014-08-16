@@ -38,9 +38,10 @@ public class NameDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         Bundle argumets = getArguments();
-        String name = (String)argumets.get(MyActivity.NAME_TAG);
 
-        setName(name);
-
+        if(argumets != null) {
+            String name = (String) argumets.get(MyActivity.NAME_TAG);
+            setName(name);
+        }
     }
 }
