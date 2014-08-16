@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PracticaC2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_add_name">Ingrese un name</string>
+    <string name="btn_add_name">Submit</string>
+    <string name="title_activity_name_detail">NameDetailActivity</string>
+
+</resources>
