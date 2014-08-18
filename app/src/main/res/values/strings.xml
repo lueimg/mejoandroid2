@@ -11,5 +11,11 @@
     <string name="action_fav">fav</string>
     <string name="title_activity_hotel">HotelActivity</string>
     <string name="msg_share">Te comparto la habitacion</string>
+    <string name="msg_rate">Dejanos tu calificacion</string>
+
+    <string-array name="array_rate">
+        <item>Bueno</item>
+        <item>Malo</item>
+    </string-array>
 
 </resources>
