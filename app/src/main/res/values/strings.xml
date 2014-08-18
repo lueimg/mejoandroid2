@@ -10,5 +10,6 @@
     <string name="action_share">share</string>
     <string name="action_fav">fav</string>
     <string name="title_activity_hotel">HotelActivity</string>
+    <string name="msg_share">Te comparto la habitacion</string>
 
 </resources>

@@ -1,7 +1,9 @@
 package com.luismori.practicac2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +55,20 @@ public class HotelActivity extends Activity {
 
                 return true;
             case R.id.action_share:
+
+                Intent share = new Intent();
+                share.setAction(Intent.ACTION_SEND);
+
+                String msg = getResources().getString(R.string.msg_share);
+                share.putExtra(Intent.EXTRA_TEXT,msg);
+
+                Uri img_res = Uri.parse("android.resource://" + getPackageName() + "/drawable/" + R.drawable.hotel1);
+                share.putExtra(Intent.EXTRA_STREAM, img_res);
+
+                share.setType("image/jpeg");
+
+                startActivity(Intent.createChooser(share,"Compartir"));
+
                return true;
             default:
                 return super.onOptionsItemSelected(item);
