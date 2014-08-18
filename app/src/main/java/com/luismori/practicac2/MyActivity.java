@@ -23,6 +23,7 @@ public class MyActivity extends Activity {
     private static final ArrayList<String> names = new ArrayList<String>();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
