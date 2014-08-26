@@ -18,6 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
            >
 
             <TextView
@@ -34,8 +35,17 @@
                 android:drawSelectorOnTop="true"
                 android:entries="@array/array_rate"
                 ></Spinner>
-            </LinearLayout>
 
+
+            </LinearLayout>
+        <ToggleButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggle_recommendation"
+            android:textOn="@string/msg_yes"
+            android:textOff="@string/msg_no"
+            android:onClick="toggleClicked"
+            />
     </LinearLayout>
 
 

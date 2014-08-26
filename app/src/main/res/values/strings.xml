@@ -12,6 +12,8 @@
     <string name="title_activity_hotel">HotelActivity</string>
     <string name="msg_share">Te comparto la habitacion</string>
     <string name="msg_rate">Dejanos tu calificacion</string>
+    <string name="msg_yes">si</string>
+    <string name="msg_no">no</string>
 
     <string-array name="array_rate">
         <item>Bueno</item>

@@ -5,14 +5,23 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+
 import com.luismori.practicac2.R;
 
-public class HotelActivity extends Activity {
+public class HotelActivity extends SherlockActivity {
 
 
     private boolean favorite = false;
+
+    public void toggleClicked(View v){
+        Log.e("TAG","toggle");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +33,7 @@ public class HotelActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.hotel, menu);
+        getSupportMenuInflater().inflate(R.menu.hotel, menu);
         return true;
     }
 
