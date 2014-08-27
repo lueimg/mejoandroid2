@@ -19,5 +19,9 @@
         <item>Bueno</item>
         <item>Malo</item>
     </string-array>
+    <string-array name="dialog_otions">
+        <item>opcion A</item>
+        <item>Opcion B</item>
+    </string-array>
 
 </resources>

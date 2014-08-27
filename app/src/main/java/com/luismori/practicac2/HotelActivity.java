@@ -1,6 +1,11 @@
 package com.luismori.practicac2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -8,13 +13,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
+import android.view.Menu;
+import android.view.MenuItem;
+
 
 import com.luismori.practicac2.R;
 
-public class HotelActivity extends SherlockActivity {
+public class HotelActivity extends Activity implements SendDataDialogFragment.DialogListener {
 
 
     private boolean favorite = false;
@@ -33,7 +38,7 @@ public class HotelActivity extends SherlockActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getSupportMenuInflater().inflate(R.menu.hotel, menu);
+        getMenuInflater().inflate(R.menu.hotel, menu);
         return true;
     }
 
@@ -79,11 +84,77 @@ public class HotelActivity extends SherlockActivity {
                 startActivity(Intent.createChooser(share,"Compartir"));
 
                return true;
+            case R.id.action_dialog:
+                SendDataDialogFragment f = new SendDataDialogFragment();
+                f.show(getFragmentManager(),"Dialogo");
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
 
         }
 
+
+    }
+
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        Log.e("TAG","dijo que si");
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
+    }
+}
+
+
+class SendDataDialogFragment extends DialogFragment{
+
+    public interface DialogListener{
+        public void onDialogPositiveClick(DialogFragment dialog);
+        public void onDialogNegativeClick(DialogFragment dialog);
+    }
+
+    //uso la interface declarada
+    DialogListener listener;
+
+    //on attach cuando el fragmenteo se adjuanta
+    // on created dialog cuando se
+
+
+
+    //cuando el fragmento se adjunta a la interface
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try{
+            //que el objeto listener sea la actividad
+            listener = (DialogListener)activity;
+        }
+        catch (ClassCastException e){
+
+        }
+    }
+
+    //CUANDO EL DIALOGO ES CREADO
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        super.onCreateDialog(savedInstanceState);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Titulo")
+               .setSingleChoiceItems(R.array.dialog_otions,-1,null)
+               .setPositiveButton(R.string.msg_yes, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       listener.onDialogPositiveClick(SendDataDialogFragment.this);
+                   }
+               });
+
+        return builder.create();
 
     }
 }
